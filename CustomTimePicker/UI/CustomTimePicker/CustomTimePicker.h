@@ -17,5 +17,8 @@
 @property(nonatomic,unsafe_unretained)id<CustomTimePickerDlegate>delegate;
 
 - (id)initWithView:(UIView *)view withDarkTheme:(BOOL)isDarkTheme ;
+@property(nonatomic,strong)NSString *preselectedTime; // assuming in @"06:00 AM" format.
+
+-(void)showPreselectedTimeIFavailable;
 
 @end
