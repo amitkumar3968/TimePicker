@@ -493,4 +493,49 @@ NSString *seperatorImageName = nil;
     [mask addSublayer:selectorCircleLayer];
     [mask addSublayer:centerCircleLayer];
 }
+-(void)showPreselectedTimeIFavailable{
+    
+    if (self.preselectedTime!=nil) {
+        
+        NSString *hourtime=[[self.preselectedTime componentsSeparatedByString:@":" ] firstObject];
+        NSString *minutetime=[[[[self.preselectedTime componentsSeparatedByString:@":" ] lastObject] componentsSeparatedByString:@" "] firstObject];
+        NSString *ampm=[[self.preselectedTime componentsSeparatedByString:@" "] lastObject];
+        
+        if ([ampm  compare:@"AM" options:NSCaseInsensitiveSearch]==NSOrderedSame) {
+            [timeModeLabel setTitle:@"AM" forState:UIControlStateNormal];
+            
+            UIButton *pmButton = (UIButton *)[self viewWithTag:581];
+            [pmButton setBackgroundColor:clockBackgroundColor];
+            
+            UIButton *amButton = (UIButton *)[self viewWithTag:185];
+            [amButton setBackgroundColor:clockPointerColor];
+            
+        }
+        if ([ampm  compare:@"PM" options:NSCaseInsensitiveSearch]==NSOrderedSame) {
+            [timeModeLabel setTitle:@"PM" forState:UIControlStateNormal];
+            
+             UIButton *amButton = (UIButton *)[self viewWithTag:185];
+            [amButton setBackgroundColor:clockBackgroundColor];
+            
+            UIButton *pmButton = (UIButton *)[self viewWithTag:581];
+            [pmButton setBackgroundColor:clockPointerColor];
+            
+        }
+        else {
+            // to do...
+        }
+        
+         [hoursButton setTitle:hourtime forState:UIControlStateNormal];
+        [minuteButton setTitle:minutetime forState:UIControlStateNormal];
+        [timeModeLabel setTitle:ampm forState:UIControlStateNormal];
+        //[self changeTimeSystem:timeModeLabel];
+        
+        
+//        [self rotateHand:clockHandView rotationDegree:180 ];
+        
+        
+
+    }
+    
+}
 @end
