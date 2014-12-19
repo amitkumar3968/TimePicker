@@ -532,10 +532,27 @@ NSString *seperatorImageName = nil;
         
         
 //        [self rotateHand:clockHandView rotationDegree:180 ];
+ [self hourhandrotationtohourhand:hourtime];
         
         
 
     }
+    
+}
+-(void)hourhandrotationtohourhand:(NSString *)hourhandvalue{
+    int hourhand=(int)hourhandvalue.intValue;
+    
+    
+    [UIView animateWithDuration:1.0
+                          delay:0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         clockHandView.transform = CGAffineTransformMakeRotation((hourhand*(360/12))*(M_PI/180));
+                        
+                         
+                     } completion:^(BOOL finished) {
+                         
+                     }];
     
 }
 @end
